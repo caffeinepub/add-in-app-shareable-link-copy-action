@@ -1,0 +1,111 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 7,
+  "summary": "Expand the app beyond link-copy actions to include a new Chat page with media/share capabilities (camera, mic recording, and file upload).",
+  "architectural_notes": [],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-add-a-copy-app-link-action-in-the-authenticated-ui-header-so-users-can-easily-copy-the-current-app-url-to-their-clipboard-instead-of-needing-to-find-the-url-via-the-workspace-preview-button-the-action-must-work-on-all-tabs-in-mainlayout",
+      "title": "Add a “Copy app link” action in the authenticated UI header so users can easily copy the current app URL to their clipboard (instead of needing to find the URL via the workspace preview button). The action must work on all tabs in MainLayout.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-copy-app-link-button-on-the-profile-page-near-existing-profile-actions-edit-profile-logout-to-provide-a-second-obvious-place-for-users-to-share-the-app-url",
+      "title": "Add a “Copy app link” button on the Profile page near existing profile actions (Edit Profile / Logout) to provide a second obvious place for users to share the app URL.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-identify-and-fix-the-root-cause-of-the-previous-deployment-build-failure-so-the-project-can-build-and-deploy-successfully-again",
+      "title": "Identify and fix the root cause of the previous deployment/build failure so the project can build and deploy successfully again.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-when-a-build-deploy-fails-surface-the-actionable-error-output-compiler-build-logs-in-a-concise-developer-readable-form-so-the-failure-can-be-retried-with-a-clear-diagnosis",
+      "title": "When a build/deploy fails, surface the actionable error output (compiler/build logs) in a concise, developer-readable form so the failure can be retried with a clear diagnosis.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-new-chat-messages-tab-to-the-authenticated-app-ui-and-route-it-to-a-new-chat-screen",
+      "title": "Add a new Chat (Messages) tab to the authenticated app UI and route it to a new Chat screen.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-the-chat-screen-ui-with-a-chat-window-that-supports-composing-and-sending-text-messages-and-displaying-message-history-in-the-same-view",
+      "title": "Implement the Chat screen UI with a chat window that supports composing and sending text messages and displaying message history in the same view.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-camera-photo-capture-option-within-the-chat-input-ui-allowing-the-user-to-capture-or-select-an-image-and-attach-it-to-a-message",
+      "title": "Add a camera/photo capture option within the Chat input UI, allowing the user to capture or select an image and attach it to a message.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-mic-voice-recording-option-within-the-chat-input-ui-allowing-the-user-to-record-audio-and-attach-it-to-a-message",
+      "title": "Add a mic/voice recording option within the Chat input UI, allowing the user to record audio and attach it to a message.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-file-upload-share-option-within-the-chat-input-ui-allowing-the-user-to-attach-files-to-a-message",
+      "title": "Add a file upload/share option within the Chat input UI, allowing the user to attach files to a message.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Add a new Chat page/screen to the app.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Add a camera/photo capture option within the Chat input UI.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Add a mic/voice recording option within the Chat input UI.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Add a file upload/share option within the Chat input UI.",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "projectName": "Add in-app shareable link copy action",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

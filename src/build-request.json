@@ -1,0 +1,130 @@
+{
+  "kind": "build_request",
+  "title": "Add Chat page with camera, voice recording, and file sharing in chat input",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-5",
+      "text": "Add a new Chat (Messages) tab to the authenticated app UI and route it to a new Chat screen.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "recent-1"
+        ],
+        "quotes": [
+          "Just confirm: should I add all four features into a new **Chat page**?",
+          "User: yes"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Bottom navigation in MainLayout includes a third tab labeled \"Chat\" (or \"Messages\") alongside Home and Profile.",
+        "Selecting the Chat tab renders a Messages/Chat page without console errors.",
+        "The Chat tab is available for authenticated users on all tabs in MainLayout (consistent with existing app structure)."
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Implement the Chat screen UI with a chat window that supports composing and sending text messages and displaying message history in the same view.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "recent-1"
+        ],
+        "quotes": [
+          "there are no option to chat",
+          "User: yes"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Chat screen shows a scrollable message list area and a sticky input composer at the bottom.",
+        "User can type a message and send it; the message appears in the message list immediately after sending.",
+        "If message history is not persisted, the UI clearly behaves consistently within the current session (no crashes on refresh).",
+        "All user-facing labels/buttons on the Chat screen are in English."
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Add a camera/photo capture option within the Chat input UI, allowing the user to capture or select an image and attach it to a message.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "recent-1"
+        ],
+        "quotes": [
+          "Add a camera/photo capture option within the Chat input UI.",
+          "User: yes"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Chat input bar includes a visible camera icon/button on common mobile and desktop widths (no hidden/overflowed actions without an accessible alternative).",
+        "Clicking the camera action prompts for camera permission where applicable and allows capturing an image or selecting an image file as a fallback.",
+        "After capture/selection, the chosen image is shown as an attachment preview and can be removed before sending.",
+        "Sending with an attached image creates a message in the message list that visibly includes the image content (thumbnail/preview)."
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "text": "Add a mic/voice recording option within the Chat input UI, allowing the user to record audio and attach it to a message.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "recent-1"
+        ],
+        "quotes": [
+          "Add a mic/voice recording option within the Chat input UI.",
+          "User: yes"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Chat input bar includes a visible mic icon/button on common mobile and desktop widths.",
+        "Starting a recording prompts for microphone permission where applicable and provides clear recording state (e.g., timer or “Recording…”).",
+        "Stopping a recording produces an audio attachment preview (playback controls) and allows removal before sending.",
+        "Sending with an attached recording creates a message in the message list that includes an audio player for playback."
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "text": "Add a file upload/share option within the Chat input UI, allowing the user to attach files to a message.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "recent-1"
+        ],
+        "quotes": [
+          "Add a file upload/share option within the Chat input UI.",
+          "User: yes"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Chat input bar includes a visible file/paperclip icon/button on common mobile and desktop widths.",
+        "User can select a file to attach; an attachment preview shows filename and size (and type if available) with an option to remove before sending.",
+        "Sending with an attached file creates a message in the message list that displays the file as a downloadable link or attachment item.",
+        "The UI handles unsupported file types gracefully (no crash), displaying a generic attachment representation when needed."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not edit files under frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, or anything in frontend/src/components/ui (compose them instead).",
+    "Backend must remain a single Motoko actor in backend/main.mo; do not introduce additional backend services."
+  ],
+  "nonGoals": [
+    "Implementing real-time messaging (WebSockets/socket.io) or multi-user presence.",
+    "Persisting chats/messages on the backend unless explicitly requested later.",
+    "Third-party authentication providers beyond Internet Identity.",
+    "Push notifications or email/SMS messaging integrations."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
+  }
+}

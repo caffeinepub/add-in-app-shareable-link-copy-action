@@ -1,0 +1,156 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Chat page with camera, voice recording, and file sharing in chat input",
+  "requirements": [
+    {
+      "id": "REQ-5",
+      "summary": "Add a new Chat/Messages tab in MainLayout bottom navigation and route it to a new Chat screen for authenticated users.",
+      "acceptanceCriteria": [
+        "Bottom navigation in MainLayout includes a third tab labeled \"Chat\" (or \"Messages\") alongside Home and Profile.",
+        "Selecting the Chat tab renders a Messages/Chat page without console errors.",
+        "The Chat tab is available for authenticated users on all tabs in MainLayout (consistent with existing app structure)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/MainLayout.tsx",
+          "operation": "modify",
+          "description": "Add a third bottom-nav tab (\"Chat\"/\"Messages\"), extend the local tab state to include it, and render the new chat page when selected; ensure tab UI remains visible across screen sizes."
+        },
+        {
+          "path": "frontend/src/pages/MessagesPage.tsx",
+          "operation": "modify",
+          "description": "Implement the MessagesPage as the Chat screen container (header/body sizing, safe scrolling) and wire it to render the chat window component."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Implement an in-session chat UI with message history display and a bottom composer to send text messages.",
+      "acceptanceCriteria": [
+        "Chat screen shows a scrollable message list area and a sticky input composer at the bottom.",
+        "User can type a message and send it; the message appears in the message list immediately after sending.",
+        "If message history is not persisted, the UI clearly behaves consistently within the current session (no crashes on refresh).",
+        "All user-facing labels/buttons on the Chat screen are in English."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/ChatWindow.tsx",
+          "operation": "modify",
+          "description": "Replace the placeholder with the main chat UI: scrollable message list + sticky composer, local message state updates on send, and clear English labels for actions."
+        },
+        {
+          "path": "frontend/src/components/chat/MessageList.tsx",
+          "operation": "create",
+          "description": "Create a presentational component that renders the scrollable chat message history (text and attachments) and maintains stable layout without console errors."
+        },
+        {
+          "path": "frontend/src/components/chat/MessageComposer.tsx",
+          "operation": "create",
+          "description": "Create the sticky bottom composer component (text input + send button + attachment actions) and expose callbacks to append a new message immediately to the session message list."
+        },
+        {
+          "path": "frontend/src/hooks/useChatSession.ts",
+          "operation": "create",
+          "description": "Add a lightweight hook to manage in-memory (and optionally sessionStorage-backed) chat message state so refresh does not crash and behavior remains consistent within a session."
+        },
+        {
+          "path": "frontend/src/components/chat/types.ts",
+          "operation": "create",
+          "description": "Define shared TypeScript types for chat messages and attachments (text/image/audio/file) to keep ChatWindow, MessageList, and Composer consistent."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Add camera/photo capture to the chat composer with preview, removal, and sending image messages.",
+      "acceptanceCriteria": [
+        "Chat input bar includes a visible camera icon/button on common mobile and desktop widths (no hidden/overflowed actions without an accessible alternative).",
+        "Clicking the camera action prompts for camera permission where applicable and allows capturing an image or selecting an image file as a fallback.",
+        "After capture/selection, the chosen image is shown as an attachment preview and can be removed before sending.",
+        "Sending with an attached image creates a message in the message list that visibly includes the image content (thumbnail/preview)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/chat/MessageComposer.tsx",
+          "operation": "modify",
+          "description": "Add a visible camera action to the composer, show an image attachment preview with a remove option, and include attached image data when sending a message."
+        },
+        {
+          "path": "frontend/src/components/chat/CameraCaptureDialog.tsx",
+          "operation": "create",
+          "description": "Implement a camera capture dialog/sheet for taking a photo plus image-file fallback selection. Use the selected component 'camera' hook (useCamera) to provide camera preview and capture; Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/chat/AttachmentPreview.tsx",
+          "operation": "create",
+          "description": "Create a reusable attachment preview renderer for pending (pre-send) attachments, including image thumbnails and a remove action."
+        },
+        {
+          "path": "frontend/src/components/chat/MessageList.tsx",
+          "operation": "modify",
+          "description": "Render image attachments inside sent messages (e.g., thumbnail/preview) using safe object URLs and graceful fallback for missing/invalid data."
+        }
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "summary": "Add mic/voice recording to the chat composer with recording state, preview playback, removal, and sending audio messages.",
+      "acceptanceCriteria": [
+        "Chat input bar includes a visible mic icon/button on common mobile and desktop widths.",
+        "Starting a recording prompts for microphone permission where applicable and provides clear recording state (e.g., timer or “Recording…”).",
+        "Stopping a recording produces an audio attachment preview (playback controls) and allows removal before sending.",
+        "Sending with an attached recording creates a message in the message list that includes an audio player for playback."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useVoiceRecorder.ts",
+          "operation": "create",
+          "description": "Create a hook that uses browser MediaRecorder APIs to request microphone permission, manage start/stop, expose clear recording state (including duration/timer), and output an audio File/Blob for attachment."
+        },
+        {
+          "path": "frontend/src/components/chat/MessageComposer.tsx",
+          "operation": "modify",
+          "description": "Add a visible mic action, integrate the voice recorder hook, display clear recording state while active, and produce an audio preview with playback + remove before sending."
+        },
+        {
+          "path": "frontend/src/components/chat/AttachmentPreview.tsx",
+          "operation": "modify",
+          "description": "Extend the preview UI to support audio attachments with playback controls and removal."
+        },
+        {
+          "path": "frontend/src/components/chat/MessageList.tsx",
+          "operation": "modify",
+          "description": "Render sent audio attachments using an in-message audio player for playback, with resilient handling when the browser cannot play the type."
+        }
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "summary": "Add file upload/share to the chat composer with attachment metadata preview, removal, and sending messages containing downloadable attachments.",
+      "acceptanceCriteria": [
+        "Chat input bar includes a visible file/paperclip icon/button on common mobile and desktop widths.",
+        "User can select a file to attach; an attachment preview shows filename and size (and type if available) with an option to remove before sending.",
+        "Sending with an attached file creates a message in the message list that displays the file as a downloadable link or attachment item.",
+        "The UI handles unsupported file types gracefully (no crash), displaying a generic attachment representation when needed."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/chat/MessageComposer.tsx",
+          "operation": "modify",
+          "description": "Add a visible file/paperclip action wired to a file input, show filename/size/type preview with remove, and include the attached file when sending."
+        },
+        {
+          "path": "frontend/src/components/chat/AttachmentPreview.tsx",
+          "operation": "modify",
+          "description": "Extend the preview UI to support generic file attachments (filename, size, type when available) with removal and safe display for unknown/unsupported types."
+        },
+        {
+          "path": "frontend/src/components/chat/MessageList.tsx",
+          "operation": "modify",
+          "description": "Render sent file attachments as downloadable links/items using safe object URLs; fall back to a generic attachment representation when type is unknown."
+        }
+      ]
+    }
+  ]
+}

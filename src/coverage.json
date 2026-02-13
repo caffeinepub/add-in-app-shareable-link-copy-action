@@ -1,0 +1,116 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-13T11:29:54.696Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 5,
+    "implemented": 5,
+    "items": [
+      {
+        "id": "REQ-5",
+        "summary": "Add a new Chat (Messages) tab to the authenticated app UI and route it to a new Chat screen.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/MainLayout.tsx",
+          "frontend/src/pages/MessagesPage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/MainLayout.tsx",
+          "frontend/src/pages/MessagesPage.tsx"
+        ]
+      },
+      {
+        "id": "REQ-6",
+        "summary": "Implement the Chat screen UI with a chat window that supports composing and sending text messages and displaying message history in the same view.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/ChatWindow.tsx",
+          "frontend/src/components/chat/MessageList.tsx",
+          "frontend/src/components/chat/MessageComposer.tsx",
+          "frontend/src/hooks/useChatSession.ts",
+          "frontend/src/components/chat/types.ts"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/ChatWindow.tsx",
+          "frontend/src/components/chat/MessageList.tsx",
+          "frontend/src/components/chat/MessageComposer.tsx",
+          "frontend/src/hooks/useChatSession.ts",
+          "frontend/src/components/chat/types.ts"
+        ]
+      },
+      {
+        "id": "REQ-7",
+        "summary": "Add a camera/photo capture option within the Chat input UI, allowing the user to capture or select an image and attach it to a message.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/chat/MessageComposer.tsx",
+          "frontend/src/components/chat/CameraCaptureDialog.tsx",
+          "frontend/src/components/chat/AttachmentPreview.tsx",
+          "frontend/src/components/chat/MessageList.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/chat/MessageComposer.tsx",
+          "frontend/src/components/chat/CameraCaptureDialog.tsx",
+          "frontend/src/components/chat/AttachmentPreview.tsx",
+          "frontend/src/components/chat/MessageList.tsx"
+        ]
+      },
+      {
+        "id": "REQ-8",
+        "summary": "Add a mic/voice recording option within the Chat input UI, allowing the user to record audio and attach it to a message.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/hooks/useVoiceRecorder.ts",
+          "frontend/src/components/chat/MessageComposer.tsx",
+          "frontend/src/components/chat/AttachmentPreview.tsx",
+          "frontend/src/components/chat/MessageList.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/hooks/useVoiceRecorder.ts",
+          "frontend/src/components/chat/MessageComposer.tsx",
+          "frontend/src/components/chat/AttachmentPreview.tsx",
+          "frontend/src/components/chat/MessageList.tsx"
+        ]
+      },
+      {
+        "id": "REQ-9",
+        "summary": "Add a file upload/share option within the Chat input UI, allowing the user to attach files to a message.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/chat/MessageComposer.tsx",
+          "frontend/src/components/chat/AttachmentPreview.tsx",
+          "frontend/src/components/chat/MessageList.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/chat/MessageComposer.tsx",
+          "frontend/src/components/chat/AttachmentPreview.tsx",
+          "frontend/src/components/chat/MessageList.tsx"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/components/ChatWindow.tsx",
+    "frontend/src/components/MainLayout.tsx",
+    "frontend/src/components/chat/AttachmentPreview.tsx",
+    "frontend/src/components/chat/CameraCaptureDialog.tsx",
+    "frontend/src/components/chat/MessageComposer.tsx",
+    "frontend/src/components/chat/MessageList.tsx",
+    "frontend/src/components/chat/types.ts",
+    "frontend/src/hooks/useChatSession.ts",
+    "frontend/src/hooks/useVoiceRecorder.ts",
+    "frontend/src/pages/MessagesPage.tsx",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

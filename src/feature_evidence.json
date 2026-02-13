@@ -1,0 +1,123 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-add-a-new-chat-messages-tab-to-the-authenticated-app-ui-and-route-it-to-a-new-chat-screen",
+      "featureTitle": "Add a new Chat (Messages) tab to the authenticated app UI and route it to a new Chat screen.",
+      "files": [
+        "frontend/src/components/MainLayout.tsx",
+        "frontend/src/pages/MessagesPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "camera@1.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-the-chat-screen-ui-with-a-chat-window-that-supports-composing-and-sending-text-messages-and-displaying-message-history-in-the-same-view",
+      "featureTitle": "Implement the Chat screen UI with a chat window that supports composing and sending text messages and displaying message history in the same view.",
+      "files": [
+        "frontend/src/components/ChatWindow.tsx",
+        "frontend/src/components/chat/MessageComposer.tsx",
+        "frontend/src/components/chat/MessageList.tsx",
+        "frontend/src/components/chat/types.ts",
+        "frontend/src/hooks/useChatSession.ts"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "camera@1.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-camera-photo-capture-option-within-the-chat-input-ui-allowing-the-user-to-capture-or-select-an-image-and-attach-it-to-a-message",
+      "featureTitle": "Add a camera/photo capture option within the Chat input UI, allowing the user to capture or select an image and attach it to a message.",
+      "files": [
+        "frontend/src/components/chat/AttachmentPreview.tsx",
+        "frontend/src/components/chat/CameraCaptureDialog.tsx",
+        "frontend/src/components/chat/MessageComposer.tsx",
+        "frontend/src/components/chat/MessageList.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "camera@1.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-mic-voice-recording-option-within-the-chat-input-ui-allowing-the-user-to-record-audio-and-attach-it-to-a-message",
+      "featureTitle": "Add a mic/voice recording option within the Chat input UI, allowing the user to record audio and attach it to a message.",
+      "files": [
+        "frontend/src/components/chat/AttachmentPreview.tsx",
+        "frontend/src/components/chat/MessageComposer.tsx",
+        "frontend/src/components/chat/MessageList.tsx",
+        "frontend/src/hooks/useVoiceRecorder.ts"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "camera@1.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-8"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-file-upload-share-option-within-the-chat-input-ui-allowing-the-user-to-attach-files-to-a-message",
+      "featureTitle": "Add a file upload/share option within the Chat input UI, allowing the user to attach files to a message.",
+      "files": [
+        "frontend/src/components/chat/AttachmentPreview.tsx",
+        "frontend/src/components/chat/MessageComposer.tsx",
+        "frontend/src/components/chat/MessageList.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "camera@1.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-9"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-13T11:29:54.693Z",
+  "summary": "Most requested Chat UI functionality is implemented: a new Chat tab in MainLayout routes to MessagesPage/ChatWindow; ChatWindow shows a scrollable message list and sticky composer; attachments (image/audio/file) have previews, removal, and are rendered in the message list. One potential gap remains around completing voice recordings into an attachment preview/message due to missing evidence that the recorded blob is ever converted into an attachment after stopping the recorder.",
+  "missing_requirements": [
+    {
+      "id": "REQ-8",
+      "requirement": "Stopping a recording produces an audio attachment preview (playback controls) and allows removal before sending; sending with an attached recording creates a message that includes an audio player.",
+      "reason": "The composer defines logic to create an audio attachment from `audioBlob` (handleRecordingComplete), but the diff summary does not show that this function is ever invoked (e.g., after `stopRecording()` or via an effect on `audioBlob`). Without that wiring, stopping may not result in an attachment preview or a sent audio message.",
+      "evidence": [
+        "frontend/src/components/chat/MessageComposer.tsx (shows handleRecordingComplete definition but no visible invocation in provided diff excerpt)",
+        "frontend/src/hooks/useVoiceRecorder.ts (audioBlob is set on MediaRecorder.onstop, requiring composer wiring to consume it)"
+      ]
+    }
+  ],
+  "hallucinated_features": [],
+  "confidence": 0.62,
+  "changed_files": [
+    "frontend-file-summaries.txt",
+    "frontend/src/components/ChatWindow.tsx",
+    "frontend/src/components/MainLayout.tsx",
+    "frontend/src/components/chat/AttachmentPreview.tsx",
+    "frontend/src/components/chat/CameraCaptureDialog.tsx",
+    "frontend/src/components/chat/MessageComposer.tsx",
+    "frontend/src/components/chat/MessageList.tsx",
+    "frontend/src/components/chat/types.ts",
+    "frontend/src/hooks/useChatSession.ts",
+    "frontend/src/hooks/useVoiceRecorder.ts",
+    "frontend/src/pages/MessagesPage.tsx",
+    "project_state.json"
+  ]
+}
